@@ -1,0 +1,37 @@
+version: '3'
+services:
+  library_db:
+    image: postgres:14.5
+    container_name: sandbox_db
+    environment:
+      POSTGRES_DB: Chesnokov_215
+      POSTGRES_USER: Chesnokov_215
+      POSTGRES_PASSWORD: Chesnokov_215
+    volumes:
+      - ./docker/db/scripts/library:/docker-entrypoint-initdb.d
+    ports:
+      - "5433:5432"
+
+  station_db:
+    image: postgres:14.5
+    container_name: train_db
+    environment:
+      POSTGRES_DB: Chesnokov_215
+      POSTGRES_USER: Chesnokov_215
+      POSTGRES_PASSWORD: Chesnokov_215
+    volumes:
+      - ./docker/db/scripts/train:/docker-entrypoint-initdb.d
+    ports:
+      - "5434:5432"
+
+  station_personells_db:
+    image: postgres:14.5
+    container_name: hospital_db
+    environment:
+      POSTGRES_DB: Chesnokov_215
+      POSTGRES_USER: Chesnokov_215
+      POSTGRES_PASSWORD: Chesnokov_215
+    volumes:
+      - ./docker/db/scripts/hospital:/docker-entrypoint-initdb.d
+    ports:
+      - "5435:5432"
